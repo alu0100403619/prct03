@@ -1,4 +1,6 @@
-Alu3670
+Nombre: Gonzalo J. García Martín
+Alu: 3670
+Asignatura: LPP
 
 18. Es el resultado de la expresion puts.
 puts 'Hello wrold'
@@ -167,4 +169,188 @@ irb(main):078:0> x = x - %w{b c d}
 z = [0]*8
 => [0, 0, 0, 0, 0, 0, 0, 0]
 
-42. 
+42. Nos permite añadir elementos a un array.
+a = []
+=> []
+irb(main):002:0> a << 1
+=> [1]
+irb(main):003:0> a << 2 << 3
+=> [1, 2, 3]
+irb(main):004:0> a << [4, 5, 6]
+=> [1, 2, 3, [4, 5, 6]]
+irb(main):005:0> a.concat [7, 8]
+=> [1, 2, 3, [4, 5, 6], 7, 8]
+
+43. Nos permite usar operadores lógicos y de conjuntos.
+a = [1, 1, 2, 2, 3, 3, 4]
+=> [1, 1, 2, 2, 3, 3, 4]
+irb(main):007:0> b = [5, 5, 4, 4, 3, 3, 2]
+=> [5, 5, 4, 4, 3, 3, 2]
+irb(main):008:0> c = a | b
+=> [1, 2, 3, 4, 5]
+irb(main):009:0> d = b | a
+=> [5, 4, 3, 2, 1]
+irb(main):010:0> e = a & b
+=> [2, 3, 4]
+irb(main):011:0> f = b & a
+=> [4, 3, 2]
+
+44. Nos permite manejar rangos
+a = 1..10
+=> 1..10
+irb(main):013:0> a.class
+=> Range
+irb(main):014:0> a.to_a
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+irb(main):015:0> b = 1...10
+=> 1...10
+irb(main):016:0> b.to_a
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+irb(main):017:0> b.include?10
+=> false
+irb(main):018:0> b.include?8
+=> true
+irb(main):019:0> b.step(2) {|x| print "#{x}"}
+13579=> 1...10
+irb(main):020:0> 1..3.to_a
+(irb):20: warning: default `to_a' will be obsolete
+ArgumentError: bad value for range
+  from (irb):20
+  from :0
+
+45. Nos permite saber que numeros y miembros estan incluidos en el rango.
+r = 0...100
+=> 0...100
+irb(main):022:0> r.member? 50
+=> true
+irb(main):023:0> r.include? 99.9
+=> true
+irb(main):024:0> r.member? 99.9
+=> true
+
+46. Nos permite manejar modificadores de sentencia
+true.class
+=> TrueClass
+irb(main):029:0> false.class
+=> FalseClass
+irb(main):030:0> puts "hello" if 0
+hello
+=> nil
+irb(main):031:0> puts "hello" if nill
+NameError: undefined local variable or method `nill' for main:Object
+  from (irb):31
+  from :0
+irb(main):032:0> puts "hello" if ""
+(irb):32: warning: string literal in condition
+hello
+=> nil
+
+47. Nos permite manejar symbolos.
+x = :sym
+=> :sym
+irb(main):034:0> x.class
+=> Symbol
+irb(main):035:0> x == 'sym'
+=> false
+irb(main):036:0> x == :sym
+=> true
+irb(main):038:0> z = :'a long symbol'
+=> :"a long symbol"
+irb(main):039:0> z.class
+=> Symbol
+irb(main):040:0> x == 'sym'.to_sym
+=> true
+irb(main):041:0> x.to_s == 'sym'
+=> true
+
+48. No spermite manejar cadenas.
+s = "Ruby"
+=> "Ruby"
+irb(main):004:0> t = s
+=> "Ruby"
+irb(main):005:0> t[-1] = ""
+=> ""
+irb(main):006:0> print s
+Rub=> nil
+irb(main):007:0> t = "Java"
+=> "Java"
+irb(main):008:0> print s, t
+RubJava=> nil
+
+49. Nos permite formatear cadenas.
+"%d %s" % [3, "Rubies"]
+=> "3 Rubies"
+
+50. Nos permite asignarle valor a varias variables en una sola linea.
+x, y = 4, 5
+=> [4, 5]
+irb(main):013:0> z = x > y ? x : y
+=> 5
+irb(main):014:0> x, y, z = [1, 2, 3]
+=> [1, 2, 3]
+
+51. Permite manipular hashes.
+x = { :a => 1, :b => 2}
+=> {:b=>2, :a=>1}
+irb(main):016:0> x.keys
+=> [:b, :a]
+irb(main):017:0> x.values
+=> [2, 1]
+irb(main):018:0> x[:c] = 3
+=> 3
+irb(main):019:0> x
+=> {:b=>2, :c=>3, :a=>1}
+irb(main):020:0> x.delete('a')
+=> nil
+irb(main):021:0> x
+=> {:b=>2, :c=>3, :a=>1}
+irb(main):022:0> x.delete(:a)
+=> 1
+irb(main):023:0> x
+=> {:b=>2, :c=>3}
+irb(main):024:0> x = { :a => 1, :b => 2, :c => 4}
+=> {:b=>2, :c=>4, :a=>1}
+irb(main):025:0> x.delete_if{ |k, v| v % 2 == 0 }
+=> {:a=>1}
+irb(main):026:0> x
+=> {:a=>1}
+
+52. yield 4, 5; le pasa los valores 4 y 5 respectivamente como argumentos al bloque. En el bloque se debe indicar que va a recibir dos variables.
+
+53. Esta sentencia crea una hash con 0 elementos.
+counts = Hash.new(0)
+=> {}
+Crea un Hash sin elementos.
+count = {}
+=> {}
+La única diferencia es el método usado para crear el hash, en la primera se usa el método new pidiendo memoria y en la segunda se usa un constructor de copia.
+
+54. Devuelve un array con todos los elementos que casen con la expresión regular.
+'Hello world, hello LPP'.scan /\w+/
+=> ["Hello", "world", "hello", "LPP"]
+
+55. Primero crea un hash y despues lo intenta ordenar por las claves, pero como son symbolos no puede, sin embargo si se hace con cadenas si se puede.
+c = { :a => 3, :b => 2, :c => 1}
+=> {:b=>2, :c=>1, :a=>3}
+irb(main):037:0> c.keys.sort.each { |k| puts c[k] }
+NoMethodError: undefined method `<=>' for :b:Symbol
+  from (irb):37:in `sort'
+  from (irb):37
+  from :0
+irb(main):038:0> c.values.sort.each { |k| puts c[k] }
+nil
+nil
+nil
+=> [1, 2, 3]
+d = { 'e' => 3, 'a' => 2, 'h' => 1}
+=> {"h"=>1, "a"=>2, "e"=>3}
+irb(main):044:0> d.keys.sort.each { |k| puts c[k]}
+nil
+nil
+nil
+=> ["a", "e", "h"]
+irb(main):045:0> d.values.sort.each { |k| puts c[k]}
+nil
+nil
+nil
+=> [1, 2, 3]
